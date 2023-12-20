@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0;
+            padding: 50px;
+        }
+
+        .container {
+            text-align: center;
+            
+            margin-top: 100px;
+            
+        }
+
+        h1 {
+            font-size: 30px;
+            
+            color: #ed282c;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        } 
+        
+        /* Reset default margin and padding */
+       /*
+        body, h1, h2, p, div {
+            margin: 0;
+            padding: 0;
+        }*/
+
+        /* Style the running bar container */
+        .running-bar {
+            /*background-color: #b53470;*/
+            background-image: linear-gradient(to bottom, #20b183, #2ecc71);
+            
+            color: #0b0b0b;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Style the tag lines */
+        .tag-line {
+        
+            display: inline-block;
+            white-space: nowrap;
+            /* Additional styling for tag lines (e.g., font-size, padding, etc.) */
+            opacity: 0; /* Initially hide the tag lines */
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Animation for tag lines */
+        .tag-line.animate {
+            opacity: 1;
+            animation: running-bar-animation 10s linear; /* Adjust animation duration as needed */
+        }
+
+        /* Keyframe animation for the running bar */
+        @keyframes running-bar-animation {
+            0% {
+                transform: translateX(100%); /* Start from the right edge */
+            }
+            100% {
+                transform: translateX(-100%); /* Move to the left edge */
+            }
+        }
+
+
+
+    </style>
+     <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            const tagLines = document.querySelectorAll(".tag-line");
+            let currentIndex = 0;
+
+            function runAnimation() {
+                if (currentIndex < tagLines.length) {
+                    tagLines[currentIndex].classList.add("animate");
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                    tagLines.forEach(tagLine => tagLine.classList.remove("animate"));
+                }
+            }
+
+            setInterval(runAnimation, 3000); // Adjust the interval duration (in milliseconds) as needed
+        });
+
+        
+   
+
+    </script>
+    <title>Home Page</title>
+</head>
+<center>
+    <body style="background-image: url('static/images/login.jpeg');">
+        <br>
+        <br>
+        <div class="container">
+            <h1><b>Welcome to the Abuse Reporting System</b></h1>
+            
+            <br>
+
+            <div class="running-bar">
+                <div class="tag-line">Speak Up, Stand Strong: Reporting Women's Abuse Together.</div>
+                <div class="tag-line">Your Voice, Our Strength: Together Against Women's Abuse.</div>
+                <div class="tag-line">From Fear to Freedom: Reporting Women's Abuse for a Brighter Tomorrow.</div>
+                
+            </div>
+
+            <div class="buttons">
+                <a href="{{ url_for('login') }}" class="btn">Login</a>
+                <a href="{{ url_for('register') }}" class="btn">Register</a>
+            </div>
+        </div>
+    </body>
+</center>
+</html>

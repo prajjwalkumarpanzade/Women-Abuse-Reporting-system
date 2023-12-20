@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        /* ... Your existing CSS styles ... */
+        body {
+            font-family: Arial;
+            background-image: url('static/images/auth.jpeg');
+            
+            margin: 0;
+            padding: 0;
+            
+            
+        }
+
+        h1 {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            width : 80%
+        }
+        tr:nth-child(even){
+            background-color: aqua;
+
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            width : 20%
+            
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+            width : 20%
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #user-profile {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        h3 {
+            margin-top: 15px;
+        }
+
+        #complaint-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .complaint-status {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .complaint-details {
+            margin-left: 10px;
+        }
+
+        #search-bar {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #search-input {
+            padding: 5px;
+            width: 300px;
+            font-size: 16px;
+        }
+        #search-button {
+            padding: 6px 12px;
+            background-color: #09090a;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px; /* Add margin to separate the input and button */
+        }
+
+        #search-button:hover {
+            background-color: #212c38;
+        }
+
+        /* CSS Styles for the Logout Button */
+        .logout-form {
+            display: inline-block; /* Display the form as an inline element */
+            position: fixed; /* Fixed positioning */
+            bottom: 0; /* Stick to the bottom */
+            right: 0; /* Stick to the right */
+            margin: 20px; /* Add some margin for spacing */
+        }
+
+        .logout-button {
+            padding: 10px 20px; /* Add padding to the button */
+            background-color: #221a17; /* Background color */
+            color: #fff; /* Text color */
+            border: none; /* Remove the default button border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Display a pointer cursor on hover */
+            font-size: 16px; /* Font size */
+        }
+
+        .logout-button:hover {
+            background-color: #5e3326; /* Change background color on hover */
+        }
+
+        .menu-bar {
+                background-color: #333;
+                padding: 20px;
+                margin: 20px;
+                color: aquamarine;
+                
+            }
+
+            .menu-bar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                
+            }
+
+            .menu-bar ul li {
+                display: inline;
+                margin-right: 100px;
+                font-size: 25px;
+                
+            }
+            .menu-bar ul li a {
+                text-decoration: none;
+                color: aqua;
+                font-size: 25px;
+                padding: 5px 10px; /* Add padding to the menu items for spacing */
+                border: 2px  black transparent; /* Add a transparent border initially */
+                transition: border 0.3s ease;
+            }
+
+            .menu-bar a:hover {
+                background-color: #555; /* Change the background color on hover */
+            }
+            .container {
+                width: 900px;
+
+                margin: 0 auto;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                background-image: linear-gradient(to bottom, #3498db, #2ecc71);
+            }
+
+
+    </style>
+</head>
+<body>
+    <center>
+
+        <div class="menu-bar">
+            <ul>
+                <li><a href="/admin_dashboard">Dashboard</a></li>
+                
+                <li><a href="/view_user">View Users</a></li>
+
+                <li><a href="/admin_profile">Profile</a></li>
+                
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+            
+        </div>
+    </center>
+
+    
+
+    
+
+    <!-- Search Bar -->
+    <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Search by name...">
+        <button id="search-button" onclick="searchUsers()">Search</button>
+    </div>
+    <div class="container">
+    <!-- User Table -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td><a href="/admin_profile/{{ user[0] }}">{{ user[0] }}</a></td>
+                    <td>{{ user[1] }}</td>
+                    <td>{{user[2]}}</td>
+                    <td>{{user[3]}}</td>
+                    
+                </tr>
+                {% endfor %}
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- JavaScript for searching users -->
+    <script>
+        function searchUsers() {
+            var input = document.getElementById('search-input').value.toLowerCase();
+            var table = document.querySelector('table');
+            var rows = table.getElementsByTagName('tr');
+            
+            for (var i = 1; i < rows.length; i++) {
+                var name = rows[i].getElementsByTagName('td')[1];
+                if (name) {
+                    var textValue = name.textContent || name.innerText;
+                    if (textValue.toLowerCase().indexOf(input) > -1) {
+                        rows[i].style.display = '';
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</body>
+</html>

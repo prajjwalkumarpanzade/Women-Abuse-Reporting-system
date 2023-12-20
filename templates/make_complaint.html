@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Make Complaint</title>
+    <style>
+        body {  
+                
+            
+                font-family: Arial;
+                background: rgba(255, 255, 255, 0.5);
+                
+            }
+
+            .menu-bar {
+                background-color: #333;
+                padding: 20px;
+                margin: 20px;
+                color: aquamarine;
+            }
+
+            .menu-bar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                
+            }
+
+            .menu-bar ul li {
+                display: inline;
+                margin-right: 100px;
+                font-size: 25px;
+                
+            }
+            .menu-bar ul li a {
+                text-decoration: none;
+                color: aqua;
+                font-size: 25px;
+                padding: 5px 10px; /* Add padding to the menu items for spacing */
+                border: 2px  black transparent; /* Add a transparent border initially */
+                transition: border 0.3s ease;
+            }
+
+            .menu-bar a:hover {
+                background-color: #555; /* Change the background color on hover */
+            }
+
+     
+
+
+            /* Style the form elements */
+            form {
+                width: 80%;
+                max-width: 600px; /* Adjust the maximum width as needed */
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            
+
+            textarea {
+                    width: 100%;
+                    padding: 30px;
+                    margin-bottom: 20px;
+                    resize: vertical; /* Allow vertical resizing only */
+                    height: auto; /* Auto-adjust height based on content */
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            
+
+            input[type="submit"] {
+                background-color: #333;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+
+            .file-input-container {
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            input[type="file"] {
+                display: none; /* Hide the default file input */
+            }
+
+            .file-input-container label {
+                background-color: #333;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                display: inline-block;
+            }
+
+    </style>
+    
+
+
+</head>
+<center>
+    <body style="background-image: url('static/images/userdash.jpeg');">
+
+        <div class="flash-messages">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="menu-bar">
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/make_complaint">Make Complaint</a></li>
+                <li><a href="/view_complaints">View Past Complaints</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <h1>Make a Complaint</h1>
+
+        <form method="POST" action="/submit_complaint" enctype="multipart/form-data">
+            <label for="incident_description"><b>Incident Description:</b></label>
+            <textarea id="incident_description" name="incident_description" rows="4" cols="50" required></textarea>
+
+            <br><br>
+
+            <div class="file-input-container">
+                
+                <label for="evidence">Upload Evidence (Image)</label>
+                <input type="file" id="evidence" name="evidence" accept="image/*" >
+            </div>
+
+            <br><br>
+
+            <input type="submit" value="Submit Complaint">
+        </form>
+    </body>
+</center>
+</html>

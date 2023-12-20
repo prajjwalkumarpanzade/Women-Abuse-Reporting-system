@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    
+    <style>
+        body {  
+                
+            
+                font-family: Arial;
+                background: rgba(255, 255, 255, 0.1);
+                
+            }
+
+            .menu-bar {
+                background-color: #333;
+                padding: 20px;
+                margin: 20px;
+                color: aquamarine;
+            }
+
+            .menu-bar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                
+            }
+
+            .menu-bar ul li {
+                display: inline;
+                margin-right: 100px;
+                font-size: 25px;
+                
+            }
+            .menu-bar ul li a {
+                text-decoration: none;
+                color: aqua;
+                font-size: 25px;
+                padding: 5px 10px; /* Add padding to the menu items for spacing */
+                border: 2px  black transparent; /* Add a transparent border initially */
+                transition: border 0.3s ease;
+            }
+
+            .menu-bar a:hover {
+                background-color: #555; /* Change the background color on hover */
+            }
+
+    </style>
+    
+
+</head>
+<body style="background-image: url('static/images/userdash.jpeg');">
+    <center>
+    <div class="menu-bar">
+        <ul>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/make_complaint">Make Complaint</a></li>
+            <li><a href="/view_complaints">View Past Complaints</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+        
+    </div>
+    <br>
+    <br>
+    <h1>Welcome to Your Dashboard</h1>
+
+</center>
+</body>
+</html>

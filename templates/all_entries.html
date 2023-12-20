@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Entries</title>
+</head>
+<body>
+    <h1>All Entries from Tables</h1>
+
+    <h2>User Entries</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Uniqueid</th>
+                <th>Registration date</th>
+                <th>Role</th>
+                <!-- Add other user table columns here -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in user_entries %}
+                <tr>
+                    <td>{{ entry[0] }}</td>
+                    <td>{{ entry[1] }}</td>
+                    <td>{{ entry[2] }}</td>
+                    <td>{{ entry[5] }}</td>
+                    <td>{{ entry[6] }}</td>
+                    <td>{{ entry[7] }}</td>
+                    
+
+                    <!-- Add other user table columns here -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+    <h2>User Complaints</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>complaint_id</th>
+                <th>user_id</th>
+                <th>complaint_text</th>
+                <th>status</th>
+                <th>complaint date  </th>
+                <th>User Id</th>
+                <!-- Add other user table columns here -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in comp_entries %}
+                <tr>
+                    <td>{{ entry[0] }}</td>
+                    <td>{{ entry[1] }}</td>
+                    <td>{{ entry[2] }}</td>
+                    <td>{{ entry[3] }}</td>
+                    <td>{{ entry[4] }}</td>
+                    <td>{{ entry[5] }}</td>
+                    
+
+                    <!-- Add other user table columns here -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Evedance</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>evedance_id</th>
+            
+                <th>complaint_id</th>
+                <th>evedance_file</th>
+                
+                <!-- Add other user table columns here -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in evidence %}
+                <tr>
+                    <td>{{ entry[0] }}</td>
+                    <td>{{ entry[1] }}</td>
+                    <td>{{ entry[2] }}</td>
+                    
+                    
+
+                    <!-- Add other user table columns here -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

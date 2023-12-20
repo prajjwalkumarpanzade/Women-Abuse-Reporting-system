@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Complaints</title>
+    <style>
+            body {  
+                
+            
+                font-family: Arial;
+                background: rgba(255, 255, 255, 0.5);
+                
+                
+            }
+
+
+            .menu-bar {
+                background-color: #333;
+                padding: 20px;
+                margin: 20px;
+                color: aquamarine;
+            }
+
+            .menu-bar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                
+            }
+
+            .menu-bar ul li {
+                display: inline;
+                margin-right: 100px;
+                font-size: 25px;
+                
+            }
+            .menu-bar ul li a {
+                text-decoration: none;
+                color: aqua;
+                font-size: 25px;
+                padding: 5px 10px; /* Add padding to the menu items for spacing */
+                border: 2px  black transparent; /* Add a transparent border initially */
+                transition: border 0.3s ease;
+            }
+
+            .menu-bar a:hover {
+                background-color: #555; /* Change the background color on hover */
+            }
+
+        /* Style the table */
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto; /* Center the table */
+            font-family: Arial, sans-serif;
+            background-color: aqua;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* Style the table headers */
+        th {
+            background-color: #333;
+            color: rgb(224, 244, 244);
+        }
+
+        /* Style alternate rows for better readability */
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style the h1 heading */
+        h1 {
+            text-align: center;
+        }
+
+        /* Center the table within a container */
+        .container {
+                width: 900px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                background-image: linear-gradient(to bottom, #3498db, #2ecc71);
+            }
+
+    </style>
+    
+
+</head>
+<body style="background-image: url('static/images/userdash.jpeg');">
+
+    <center>
+        <div class="menu-bar">
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/make_complaint">Make Complaint</a></li>
+                <li><a href="/view_complaints">View Past Complaints</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+            
+        </div>
+        <br>
+        <br>
+    </center>
+    <div class="container">
+        <h1>View Past Complaints</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date of Complaint</th>
+                    <th>Complaint Details</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through past complaints and generate rows -->
+                {% for complaint in complaints %}
+                    <tr>
+                        <td>{{ complaint[0]}}</td>
+                        <td>{{ complaint[1] }}</td>
+                        <td>{{ complaint[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

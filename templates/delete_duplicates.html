@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Duplicate Records</title>
+</head>
+<body>
+    <h1>Delete Duplicate Records</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for message in messages %}
+                    <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <p>Click the button below to delete duplicate records based on specific criteria:</p>
+        <button type="submit">Delete Duplicates</button>
+    </form>
+</body>
+</html>

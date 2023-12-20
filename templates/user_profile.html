@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        /* Your existing CSS styles here */
+        
+        body {
+            background-image: url('/static/images/auth.jpeg');
+        }
+
+        
+        h1 {
+            background-color: #e97f2e; /* Background color */
+            color: #fff; /* Text color */
+            padding: 20px; /* Padding around the text */
+            text-align: center; /* Center-align the text */
+            font-size: 36px; /* Font size */
+            font-weight: bold; /* Bold text */
+            text-transform: uppercase; /* Uppercase text */
+            letter-spacing: 2px; /* Letter spacing */
+            margin-bottom: 20px; /* Add margin at the bottom */
+            border: 2px solid #333; /* Add a border */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Shadow effect */
+            width: 20%;
+        }
+
+        
+        h2 {
+            background-color: #e97f2e; /* Background color */
+            color: #fff; /* Text color */
+            padding: 10px; /* Padding around the text */
+            text-align: center; /* Center-align the text */
+            font-size: 24px; /* Font size */
+            font-weight: bold; /* Bold text */
+            text-transform: uppercase; /* Uppercase text */
+            letter-spacing: 1px; /* Letter spacing */
+            margin-bottom: 10px; /* Add margin at the bottom */
+            border: 2px solid #333; /* Add a border */
+            border-radius: 6px; /* Rounded corners */
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            width: 20%;
+        }
+
+        /* Table Styles */
+
+        #profile {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 50%;
+
+        }
+
+        #complaint {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 100%;
+
+        }
+
+        #u {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid;
+            width: 20%;
+        }
+
+        #c {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid;
+            width: 50%;
+
+        }
+
+        td {
+            padding: 5px;
+            text-align: center;
+            border: 1px solid;
+            width: 50%;
+        }
+
+        th:nth-child(even) {
+            background-color: #4e2c809b;
+            color: #fff;
+            
+        }
+        th:nth-child(odd) {
+            background-color: #4e2c809b;
+            color: #fff;
+            
+        }
+
+        tr:nth-child(even) {
+            background-color: #ee79d39b;
+        }
+        
+        tr:nth-child(odd) {
+            background-color: #0d8ac09b;
+        }
+        tr:hover {
+            background-color: #ed0a619b;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>User Profile</h1>
+
+        <div id="user-profile">
+                
+            <table id="profile">
+                <tr>
+                    <th id="u">User ID</th>
+                    <td>{{ user_data[0] }}</td>
+                </tr>
+                <tr>
+                    <th id="u">Name</th>
+                    <td>{{ user_data[1] }}</td>
+                </tr>
+                <tr>
+                    <th id="u">Email</th>
+                    <td>{{ user_data[2] }}</td>
+                </tr>
+                <tr>
+                    <th id="u">Role</th>
+                    <td>{{ user_data[3] }}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="complaints">
+            <h2>Complaints</h2>
+            <table id="complaint">
+                <thead>
+                    <tr>
+                        <th id="c">Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for complaint in complaints %}
+                    <tr>
+                        <td>{{ complaint[0] }}</td>
+                        <td>{{ complaint[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </center>
+    
+</body>
+</html>

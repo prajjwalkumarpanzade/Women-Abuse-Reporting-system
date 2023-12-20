@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <style>
+        /* style.css */
+
+        /* Container styles */
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-image: linear-gradient(to bottom, #3498db, #2ecc71);
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Button styles */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Alert (flash message) styles */
+        .alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border: 1px solid #f5c6cb;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        .alert ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .alert li {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+
+    </style>
+    
+</head>
+<body style="background-image: url('static/images/login.jpeg');">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    <div class="container">
+        <center>
+            <h2>Login</h2>
+        </center>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label>Select Role:</label><br>
+                <br>
+                <input type="radio" id="user" name='user_role' value="user" checked>
+                <label for="user">User</label>
+                <input type="radio" id="admin" name='user_role' value="admin">
+                <label for="admin">Admin</label>
+                <input type="radio" id="authority" name='user_role' value="authority">
+                <label for="authority">Authority</label>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            
+                
+        </form>
+    </div>
+</body>
+</html>

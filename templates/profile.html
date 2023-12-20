@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        body {  
+                
+            
+                font-family: Arial;
+                background: rgba(255, 255, 255, 0.5);
+                
+                
+            }
+            .container {
+                width: 900px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                background-image: linear-gradient(to bottom, #3498db, #2ecc71);
+            }
+
+            .menu-bar {
+                background-color: #333;
+                padding: 20px;
+                margin: 20px;
+                color: aquamarine;
+            }
+
+            .menu-bar ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                
+            }
+
+            .menu-bar ul li {
+                display: inline;
+                margin-right: 100px;
+                font-size: 25px;
+                
+            }
+            .menu-bar ul li a {
+                text-decoration: none;
+                color: aqua;
+                font-size: 25px;
+                padding: 5px 10px; /* Add padding to the menu items for spacing */
+                border: 2px  black transparent; /* Add a transparent border initially */
+                transition: border 0.3s ease;
+            }
+
+            .menu-bar a:hover {
+                background-color: #555; /* Change the background color on hover */
+            }
+
+            .profile-details {
+                font-family: Arial, sans-serif;
+                border-collapse: collapse;
+                width: 50%;
+                margin: 20px auto;
+                background-color: aqua;
+            }
+            
+            .profile-details th, .profile-details td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+            
+            .profile-details th {
+                background-color: #f2f2f2;
+            }
+            
+            .profile-details tr:nth-child(even) {
+                background-color: #f4eded;
+            }
+    </style>
+    
+
+</head>
+<body style="background-image: url('static/images/userdash.jpeg');">
+
+    <center>
+        <div class="menu-bar">
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/make_complaint">Make Complaint</a></li>
+                <li><a href="/view_complaints">View Past Complaints</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+            
+        </div>
+        <br>
+        <br>
+    
+
+        
+        <div class="container">
+            <h1>User Profile</h1>
+
+            <table class="profile-details">
+                
+                <tr>
+                    <td><strong>User ID:</strong></td>
+                    <td>{{ user_id }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Username:</strong></td>
+                    <td>{{ username }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Name:</strong></td>
+                    <td>{{ name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>{{ email }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Unique ID:</strong></td>
+                    <td>{{ unique_id }}</td>
+                </tr>
+            </table>
+        </div>
+        
+    </center>
+</body>
+</html>

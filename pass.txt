@@ -1,0 +1,8 @@
+user = Diptee 
+pass = Diptee@123
+
+authority = authority
+pass = authority@123
+
+admin = admin
+pass = admin@123
